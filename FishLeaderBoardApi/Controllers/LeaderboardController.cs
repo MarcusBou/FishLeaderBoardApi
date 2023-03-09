@@ -27,11 +27,12 @@ namespace FishLeaderBoardApi.Controllers
         [HttpGet("/toppoints/{amount}")]
         public IActionResult GetTopPoint([FromRoute] int amount)
         {
-            Record[] records = jsonHandler.GetListOfObjectsFromJsonFile<List<Record>>(jsonpath).ToArray();
+            Record[] records = jsonHandler.GetListOfObjectsFromJsonFile<Record[]>(jsonpath);
             if(amount > records.Length)
             {
                 amount = records.Length;
             }
+            // Selection sort for only up until you have the amount.
             for (int i = 0; i < records.Length; i++)
             {
                 int lowestval = i;
@@ -47,21 +48,23 @@ namespace FishLeaderBoardApi.Controllers
                 records[i] = temp;
                 
             }
-            return Ok(records.ToArray()[0..amount]);
+            //Will return from index 0 up until amount
+            return Ok(records[0..amount]);
         }
 
         [HttpGet("/topweight/{amount}")]
         public IActionResult GetTopWeight([FromRoute] int amount)
         {
-            List<Record> records = jsonHandler.GetListOfObjectsFromJsonFile<List<Record>>(jsonpath);
-            if (amount > records.Count)
+            Record[] records = jsonHandler.GetListOfObjectsFromJsonFile<Record[]>(jsonpath);
+            if (amount > records.Length)
             {
-                amount = records.Count;
+                amount = records.Length;
             }
+            // Selection sort for only up until you have the amount.
             for (int i = 0; i < amount; i++)
             {
                 int lowestval = i;
-                for (int j = i; j < records.Count; j++)
+                for (int j = i; j < records.Length; j++)
                 {
                     if (records[j].HighestWeight > records[i].HighestWeight)
                     {
@@ -72,21 +75,23 @@ namespace FishLeaderBoardApi.Controllers
                 records[lowestval] = records[i];
                 records[i] = temp;
             }
-            return Ok(records.ToArray()[0..amount]);
+            //Will return from index 0 up until amount
+            return Ok(records[0..amount]);
         }
 
         [HttpGet("/topfish/{amount}")]
         public IActionResult GetTopFish([FromRoute] int amount)
         {
-            List<Record> records = jsonHandler.GetListOfObjectsFromJsonFile<List<Record>>(jsonpath);
-            if (amount > records.Count)
+            Record[] records = jsonHandler.GetListOfObjectsFromJsonFile<Record[]>(jsonpath);
+            if (amount > records.Length)
             {
-                amount = records.Count;
+                amount = records.Length;
             }
+            // Selection sort for only up until you have the amount.
             for (int i = 0; i < amount; i++)
             {
                 int lowestval = i;
-                for (int j = i; j < records.Count; j++)
+                for (int j = i; j < records.Length; j++)
                 {
                     if (records[j].MostFish > records[i].MostFish)
                     {
@@ -97,7 +102,8 @@ namespace FishLeaderBoardApi.Controllers
                 records[lowestval] = records[i];
                 records[i] = temp;
             }
-            return Ok(records.ToArray()[0..amount]);
+            //Will return from index 0 up until amount
+            return Ok(records[0..amount]);
         }
     }
 }
