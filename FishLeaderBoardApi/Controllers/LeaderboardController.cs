@@ -11,6 +11,12 @@ namespace FishLeaderBoardApi.Controllers
         private readonly string jsonpath = "./leaderboardstats";
         private IJsonHandler jsonHandler = new JsonHandler();
 
+        [HttpGet("/")]
+        public IActionResult suckadic()
+        {
+            return Ok("Suck a dick");
+        }
+
         [HttpPost("/record")]
         public IActionResult PostNewRecord([FromBody] Record record)
         {
