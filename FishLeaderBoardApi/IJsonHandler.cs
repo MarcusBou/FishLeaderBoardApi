@@ -14,7 +14,7 @@
         public T GetListOfObjectsFromJsonFile<T>(string jsonPath);
 
         /// <summary>
-        /// Add a singular item at the bottom of the json file
+        /// Add a singular item at the bottom of the list in a json file
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="jsonPath"></param>
