@@ -9,7 +9,17 @@ namespace FishLeaderBoardApi.Controllers
     public class LeaderboardController : ControllerBase
     {
         private readonly string jsonpath = "./leaderboardstats";
-        private IJsonHandler jsonHandler = new JsonHandler();
+        private IJsonHandler jsonHandler;
+
+        public LeaderboardController()
+        {
+            jsonHandler = new JsonHandler();
+        }
+
+        public LeaderboardController(IJsonHandler jsonHandler)
+        {
+            this.jsonHandler = jsonHandler;
+        }
 
         [HttpGet("/")]
         public IActionResult suckadic()
