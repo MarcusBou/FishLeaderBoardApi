@@ -16,12 +16,6 @@ namespace FishLeaderBoardApi.Controllers
             jsonHandler = new JsonHandler();
         }
 
-        [HttpGet("/")]
-        public IActionResult suckadic()
-        {
-            return Ok("Suck a dick");
-        }
-
         [HttpPost("/record")]
         public IActionResult PostNewRecord([FromBody] Record record)
         {
