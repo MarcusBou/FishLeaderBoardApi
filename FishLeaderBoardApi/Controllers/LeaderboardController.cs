@@ -16,11 +16,6 @@ namespace FishLeaderBoardApi.Controllers
             jsonHandler = new JsonHandler();
         }
 
-        public LeaderboardController(IJsonHandler jsonHandler)
-        {
-            this.jsonHandler = jsonHandler;
-        }
-
         [HttpGet("/")]
         public IActionResult suckadic()
         {
